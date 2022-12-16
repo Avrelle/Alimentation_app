@@ -53,31 +53,56 @@ include_once("includes/header.php");
       <canvas id="myChart"></canvas>
       <div class="kcal">1200 kcal</div>
     </div>
-
-      <div>IMC</div>
-      <div><?php echo $user["weight"];?>kg</div>
+    <div class="container">
+      <div class="row text-center">
+        <div class = "col">IMC</div>
+        <div class = "col"><?php echo $user["weight"];?>kg</div>
+      </div>
+    </div>
       <div class="custom-shape-divider-bottom-1671192821">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z" class="shape-fill"></path>
     </svg>
-</div>
+    
+    </div>
     </section>
 
     <section class="date">
-      <div><?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+      <div class="text-center py-3"><?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::NONE);
                 echo $formatter->format(time());//echo dat-e('l d M Y');?></div>
     </section>
 
     <section class="list">
-      <div class="food">
-        <div class="titleFood">Big Burger</div>
-        <div class="kgFood">504kcal</div>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            
+            <div class="food">
+              <div class="titleFood"><h3>Big Burger</h3></div>
+              <div class="kgFood"><p>504kcal</p></div>
+            </div>
+            <div class="food">
+              <div class="titleFood"><h3>Big Burger</h3></div>
+              <div class="kgFood"><p>504kcal</p></div>
+            </div>
+            <div class="food">
+              <div class="titleFood"><h3>Big Burger</h3></div>
+              <div class="kgFood"><p>504kcal</p></div>
+            </div>
+            
+          
+          </div>
+        </div>
+
+
       </div>
     </section>
   </main>  
 
-  <footer>
-   <button>+</button>
+  <footer class="py-3"> 
+    <div class="text-center">
+      <button class="btn btn-primary">+</button>
+    </div>
   </footer>
 </div>
 

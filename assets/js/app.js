@@ -28,7 +28,7 @@ const ctx = document.getElementById('myChart');
     options: {
         responsive:true,
         cutout:"90%",
-        pluggins:{
+        plugins:{
             legend:false,
         },
         layout:{
