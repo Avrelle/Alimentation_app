@@ -36,11 +36,11 @@ include_once("includes/header.php");
                         <label for="password" class="form-label">Mot de passe</label>
                         <input type="password" class="form-control" id="password">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-dark">Submit</button>
                 </form>
 
                 <a href="register.php">
-                    <button type="button" class="btn btn-primary mt-2">
+                    <button type="button" class="btn btn-dark mt-2">
                         register
                     </button>
                 </a>
