@@ -1,4 +1,6 @@
 <?php
+
+
 $page = [
     'title' => " App alimentation - Login"
     
@@ -27,7 +29,7 @@ include_once("includes/header.php");
     <div class="container">
         <div class="row">
             <div class="col">
-                <form>
+                <form method="$_POST" action="">
                     <div class="mb-3">
                         <label for="email" class="form-label mt-3">Email</label>
                         <input type="email" class="form-control" id="email">
