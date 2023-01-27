@@ -1,4 +1,39 @@
 <?php
+session_start();
+
+include('./includes/connexionDB.php');
+
+if(isset($_POST["send"])){
+    if(!empty($_POST["foodName"]) && !empty($_POST["calorie"])){
+        $firstName = htmlspecialchars($_POST["foodName"]);
+        $age = htmlspecialchars($_POST["calorie"]);
+       
+        $sql= 'INSERT INTO food (foodName, calorie) 
+        VALUES (:foodName, :calorie)';
+        $query = $bdd->prepare($sql);
+        $query -> bindValue(':foodName', $foodName, PDO::PARAM_STR);
+        $query -> bindValue(':calorie', $calorie, PDO::PARAM_INT);
+        $query -> execute();
+
+        /*$recupFood = $bdd -> prepare('SELECT * FROM food WHERE foodName = ? 
+        AND calorie = ?');
+        $recupFood -> execute(array($foodName, $calorie));
+        if($recupFood->rowCount() > 0){
+            $_SESSION['foodName'] = $foodName;
+            $_SESSION['calorie'] = $calorie;
+            $_SESSION['user_id'] = $recupFood->fetch()['user_id'];
+        }*/
+        header('Location:index.php');
+        }else{
+        echo"veuiller compléter tous les champs...";
+    }
+}
+/*$id = $_GET['id'];
+$recupUser = $bdd -> prepare('SELECT * FROM food WHERE user_id = ?');
+$recupUser -> execute($id);
+$foods = $recupUser -> fetchAll();
+var_dump($foods);*/
+
 
 // connexion à la bdd
 
@@ -76,13 +111,17 @@ include_once("includes/header.php");
 
         <section class="date">
             <div class="text-center py-3"><?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::NONE);
-                echo $formatter->format(time());//echo dat-e('l d M Y');?></div>
+                echo $formatter->format(time());?></div>
         </section>
 
         <section class="list">
             <div class="container">
                 <div class="row">
                     <div class="col">
+
+                        <?php
+
+                        ?>
 
                         <div class="food">
                             <div class="titleFood">
@@ -92,22 +131,7 @@ include_once("includes/header.php");
                                 <p>504kcal</p>
                             </div>
                         </div>
-                        <div class="food">
-                            <div class="titleFood">
-                                <h3>Pain au chocolat</h3>
-                            </div>
-                            <div class="kgFood">
-                                <p>250kcal</p>
-                            </div>
-                        </div>
-                        <div class="food">
-                            <div class="titleFood">
-                                <h3>Pates carbonaras</h3>
-                            </div>
-                            <div class="kgFood">
-                                <p>504kcal</p>
-                            </div>
-                        </div>
+
 
 
                     </div>
@@ -136,16 +160,16 @@ include_once("includes/header.php");
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <form>
+                                    <form method="POST" action="">
                                         <div class="mb-3">
-                                            <label for="meal" class="form-label mt-3">Repas</label>
-                                            <input type="text" class="form-control" id="meal">
+                                            <label for="foodName" class="form-label mt-3">Repas</label>
+                                            <input type="text" class="form-control" id="foodName" name="foodName">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="calories" class="form-label">Calories</label>
-                                            <input type="text" class="form-control" id="calories">
+                                            <label for="calorie" class="form-label">Calories</label>
+                                            <input type="text" class="form-control" id="calorie" name="calorie">
                                         </div>
-                                    </form>
+
 
                                 </div>
                             </div>
@@ -153,8 +177,9 @@ include_once("includes/header.php");
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-dark">Submit</button>
+                        <button type="submit" name="send" class="btn btn-dark">Submit</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
